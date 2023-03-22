@@ -87,6 +87,7 @@ main{
     width:100%;
     height: 100%;
     object-fit: contain;
+    align-items: center;
 }
 h3{
     color:#012B28;
@@ -95,33 +96,38 @@ h3{
 
 .tests{
     display: flex;
-    
+    align-items: center;
     flex-wrap: wrap;
     align-items: center;
     /*background-color:	rgba(1, 43, 40, 1.0);*/
     justify-content: space-evenly;
 }
-.test-list{
+.test-list a {
+    text-decoration: none;
+  }
+  
+  .test-list {
     margin: 30px;
     padding: 20px;
-    height: 200px;
-    width:250px;
+    height: 250px;
+    width: 300px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    border:1px solid gray;
+    border: 1px solid gray;
     background: rgba(235, 180, 44, 0.1);
-    box-shadow: 0 8px 40px 0 rgba(1, 43, 40, 0.37);
+    box-shadow: 0 8px 40px 0 #012B28;
     backdrop-filter: blur( 4px );
     -webkit-backdrop-filter: blur( 4px );
     border-radius: 10px;
-    border: 1px solid rgba( 255, 255, 255, 0.18 );
-}
-
-.test-list:hover{
+    border: 1px solid rgba(255, 255, 255, 0.18);
+  }
+  
+  .test-list:hover {
     transform: scale(1.05);
-}
-.store{
+  }
+  
+/*.store{
     margin-top: 50px;
 }
 .game-store{
@@ -202,7 +208,7 @@ h4{
 }
 .event-text p{
     color: white;
-}
+}*/
 .contact{
     
     

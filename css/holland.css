@@ -1,0 +1,125 @@
+html,
+body {
+  color: rgb(0, 0, 0);
+  height: 100%;
+}
+
+h4 {
+  padding: 20px 20px 20px 20px;
+  margin-top: 0%;
+  margin-bottom: 0%;
+  background: -webkit-linear-gradient(#00ffea, #2dced9);
+  text-align: center;
+  font-family: Comic Sans MS;
+  border: 5px solid black;
+
+}
+
+body {
+  margin: 0;
+
+  background-size: cover;
+  background-position: center;
+  opacity: 0.9;
+}
+
+form {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Comic Sans MS;
+  background-color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  background-image: url('human-resources-management-infographic-round-260nw-639235768.webp');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.8;
+  background: -webkit-linear-gradient(#2dced9, #fa0fe6);
+
+}
+
+
+p {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0 0 10px;
+}
+
+fieldset {
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+legend {
+  font-size: 16px;
+  font-weight: bold;
+  padding: 0 10px;
+}
+
+label {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+input[type=radio]:checked::before {
+  content: "";
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: rgb(215, 2, 105);
+  margin-right: 5px;
+}
+
+.submit-link {
+  display: block;
+  margin: 0 auto;
+  background-color: blue;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+
+.container {
+  background-image: url(doodle.webp);
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  height: 1483px;
+  /* Set a height for the container */
+  margin-bottom: 0%;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* background-color: rgba(247, 5, 5, 0.5); */
+  background: -webkit-linear-gradient(#2dced9, #fa0fe6);
+  opacity: 0.7;
+
+}
+
+.second {
+  background: #fa0fe6;
+
+}
+
+.content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: -webkit-linear-gradient(#2dced9, #0676ff);
+  border: 5px solid black;
+
+
+}
