@@ -1,0 +1,662 @@
+<?php
+include("connection.php");
+include("functions.php");
+include("controller.php");
+
+// Initialize the session
+session_start();
+
+$logged_in_user = check_login($con);
+// Check if user is logged in
+if(!isset($_SESSION['user_id'])) {
+  header("Location: login.php");
+  exit();
+
+}
+
+?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/holland.css">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- <script src="riasec-test.js"></script> -->
+</head>
+
+<body>
+    <h4>TO TAKE THE HOLLAND CODE CAREER QUIZ, MARK YOUR INTEREST IN EACH ACTIVITY SHOWN. DO NOT WORRY ABOUT WHETHER YOU HAVE THE SKILLS OR TRAINING TO DO AN ACTIVITY, OR HOW MUCH MONEY YOU MIGHT MAKE. SIMPLY THINK ABOUT WHETHER YOU WOULD ENJOY DOING IT OR NOT.</h4>
+   
+      <div class="container">
+        <div class="overlay"></div> <!-- This is the overlay div for the background color -->
+        <div class="content">
+            <form id="riasec-test">
+                <p>1.)I like to work on cars</p>
+                <label>
+                    <input type="radio" name="q1" value="5">
+                    Strongly Like
+                </label>
+                <label>
+                    <input type="radio" name="q1" value="4">
+                    Like
+                </label>
+                <label>
+                    <input type="radio" name="q1" value="3">
+                    Neutral
+                </label>
+                <label>
+                    <input type="radio" name="q1" value="2">
+                    Dislike
+                </label>
+                <label>
+                    <input type="radio" name="q1" value="1">
+                    Strongly Dislike
+                </label>
+        
+                <p>2.)I like to do puzzles</p>
+                <label>
+                    <input type="radio" name="q2" value="5">
+                    Strongly Like
+                </label>
+                <label>
+                    <input type="radio" name="q2" value="4">
+                    Like
+                </label>
+                <label>
+                    <input type="radio" name="q2" value="3">
+                    Neutral
+                </label>
+                <label>
+                    <input type="radio" name="q2" value="2">
+                    Dislike
+                </label>
+                <label>
+                    <input type="radio" name="q2" value="1">
+                    Strongly Dislike
+                </label>
+        
+                <p>3.)I am good at working independently</p>
+                <label>
+                    <input type="radio" name="q3" value="5">
+                    Strongly Like
+                </label>
+                <label>
+                    <input type="radio" name="q3" value="4">
+                    Like
+                </label>
+                <label>
+                    <input type="radio" name="q3" value="3">
+                    Neutral
+                </label>
+                <label>
+                    <input type="radio" name="q3" value="2">
+                    Dislike
+                </label>
+                2 <label>
+                    <input type="radio" name="q3" value="1">
+                    Strongly Dislike
+                </label>
+                <p>4.)I like to work in teams</p>
+                <label>
+                    <input type="radio" name="q4" value="5">
+                    Strongly Like
+                </label>
+                <label>
+                    <input type="radio" name="q4" value="4">
+                    Like
+                </label>
+                <label>
+                    <input type="radio" name="q4" value="3">
+                    Neutral
+                </label>
+                <label>
+                    <input type="radio" name="q4" value="2">
+                    Dislike
+                </label>
+                <label>
+                    <input type="radio" name="q4" value="1">
+                    Strongly Dislike
+                </label>
+                <p>5.)I am an ambitious person, I set goals for myself</p>
+                <label>
+                    <input type="radio" name="q5" value="5">
+                    Strongly Like
+                </label>
+                <label>
+                    <input type="radio" name="q5" value="4">
+                    Like
+                </label>
+                <label>
+                    <input type="radio" name="q5" value="3">
+                    Neutral
+                </label>
+                <label>
+                    <input type="radio" name="q5" value="2">
+                    Dislike
+                </label>
+                <label>
+                    <input type="radio" name="q5" value="1">
+                    Strongly Dislike
+                </label>
+                <p>6.)I like to organize things, (files, desks/offices)</p>
+                <label>
+                    <input type="radio" name="q6" value="5">
+                    Strongly Like
+                </label>
+                <label>
+                    <input type="radio" name="q6" value="4">
+                    Like
+                </label>
+                <label>
+                    <input type="radio" name="q6" value="3">
+                    Neutral
+                </label>
+                <label>
+                    <input type="radio" name="q6" value="2">
+                    Dislike
+                </label>
+                <label>
+                    <input type="radio" name="q6" value="1">
+                    Strongly Dislike
+                </label>
+                <p>7.)I like to build things
+                </p>
+                <label>
+                    <input type="radio" name="q7" value="5">
+                    Strongly Like
+                </label>
+                <label>
+                    <input type="radio" name="q7" value="4">
+                    Like
+                </label>
+                <label>
+                    <input type="radio" name="q7" value="3">
+                    Neutral
+                </label>
+                <label>
+                    <input type="radio" name="q7" value="2">
+                    Dislike
+                </label>
+                <label>
+                    <input type="radio" name="q7" value="1">
+                    Strongly Dislike
+                </label>
+                <p>8.) I like to read about art and music
+                </p>
+                <label>
+                    <input type="radio" name="q8" value="5">
+                    Strongly Like
+                </label>
+                <label>
+                    <input type="radio" name="q8" value="4">
+                    Like
+                </label>
+                <label>
+                    <input type="radio" name="q8" value="3">
+                    Neutral
+                </label>
+                <label>
+                    <input type="radio" name="q8" value="2">
+                    Dislike
+                </label>
+                <label>
+                    <input type="radio" name="q8" value="1">
+                    Strongly Dislike
+                </label>
+                <p>9.) I like to have clear instructions
+                    to follow
+                </p>
+                <label>
+                    <input type="radio" name="q9" value="5">
+                    Strongly Like
+                </label>
+                <label>
+                    <input type="radio" name="q9" value="4">
+                    Like
+                </label>
+                <label>
+                    <input type="radio" name="q9" value="3">
+                    Neutral
+                </label>
+                <label>
+                    <input type="radio" name="q9" value="2">
+                    Dislike
+                </label>
+                <label>
+                    <input type="radio" name="q9" value="1">
+                    Strongly Dislike
+                </label>
+                <p>10.) I like to try to influence or
+                    persuade people
+                </p>
+                <label>
+                    <input type="radio" name="q10" value="5">
+                    Strongly Like
+                </label>
+                <label>
+                    <input type="radio" name="q10" value="4">
+                    Like
+                </label>
+                <label>
+                    <input type="radio" name="q10" value="3">
+                    Neutral
+                </label>
+                <label>
+                    <input type="radio" name="q10" value="2">
+                    Dislike
+                </label>
+                <label>
+                    <input type="radio" name="q10" value="1">
+                    Strongly Dislike
+                </label>
+                <p>11.) I like to do experiments
+                </p>
+                <label>
+                    <input type="radio" name="q11" value="5">
+                    Strongly Like
+                </label>
+                <label>
+                    <input type="radio" name="q11" value="4">
+                    Like
+                </label>
+                <label>
+                    <input type="radio" name="q11" value="3">
+                    Neutral
+                </label>
+                <label>
+                    <input type="radio" name="q11" value="2">
+                    Dislike
+                </label>
+                <label>
+                    <input type="radio" name="q11" value="1">
+                    Strongly Dislike
+                </label>
+                <p>12.) I like to teach or train people
+                </p>
+                <label>
+                    <input type="radio" name="q12" value="5">
+                    Strongly Like
+                </label>
+                <label>
+                    <input type="radio" name="q12" value="4">
+                    Like
+                </label>
+                <label>
+                    <input type="radio" name="q12" value="3">
+                    Neutral
+                </label>
+                <label>
+                    <input type="radio" name="q12" value="2">
+                    Dislike
+                </label>
+                <label>
+                    <input type="radio" name="q12" value="1">
+                    Strongly Dislike
+                </label>
+                <p>13.) I like trying to help people solve
+                    their problems
+                </p>
+                <label>
+                    <input type="radio" name="q13" value="5">
+                    Strongly Like
+                </label>
+                <label>
+                    <input type="radio" name="q13" value="4">
+                    Like
+                </label>
+                <label>
+                    <input type="radio" name="q13" value="3">
+                    Neutral
+                </label>
+                <label>
+                    <input type="radio" name="q13" value="2">
+                    Dislike
+                </label>
+                <label>
+                    <input type="radio" name="q13" value="1">
+                    Strongly Dislike
+                </label>
+                <p>14.)I like to take care of animals</p>
+                <label>
+                    <input type="radio" name="q14" value="5">
+                    Strongly Like
+                </label>
+                <label>
+                    <input type="radio" name="q14" value="4">
+                    Like
+                </label>
+                <label>
+                    <input type="radio" name="q14" value="3">
+                    Neutral
+                </label>
+                <label>
+                    <input type="radio" name="q14" value="2">
+                    Dislike
+                </label>
+                <label>
+                    <input type="radio" name="q14" value="1">
+                    Strongly Dislike
+                </label>
+                <p>15.)I wouldn't mind working 8 hours per day in an office</p>
+                <label>
+                    <input type="radio" name="q15" value="5">
+                    Strongly Like
+                </label>
+                <label>
+                    <input type="radio" name="q15" value="4">
+                    Like
+                </label>
+                <label>
+                    <input type="radio" name="q15" value="3">
+                    Neutral
+                </label>
+                <label>
+                    <input type="radio" name="q15" value="2">
+                    Dislike
+                </label>
+                <label>
+                    <input type="radio" name="q15" value="1">
+                    Strongly Dislike
+                </label>
+                <p>16.)I like selling things</p>
+                <label>
+                    <input type="radio" name="q16" value="5">
+                    Strongly Like
+                </label>
+                <label>
+                    <input type="radio" name="q16" value="4">
+                    Like
+                </label>
+                <label>
+                    <input type="radio" name="q16" value="3">
+                    Neutral
+                </label>
+                <label>
+                    <input type="radio" name="q16" value="2">
+                    Dislike
+                </label>
+                <label>
+                    <input type="radio" name="q16" value="1">
+                    Strongly Dislike
+                </label>
+                <p>17.).I enjoy creative writing</p>
+                <label>
+                    <input type="radio" name="q17" value="5">
+                    Strongly Like
+                </label>
+                <label>
+                    <input type="radio" name="q17" value="4">
+                    Like
+                </label>
+                <label>
+                    <input type="radio" name="q17" value="3">
+                    Neutral
+                </label>
+                <label>
+                    <input type="radio" name="q17" value="2">
+                    Dislike
+                </label>
+                <label>
+                    <input type="radio" name="q17" value="1">
+                    Strongly Dislike
+                </label>
+                <p>18.).I enjoy science</p>
+                <label>
+                    <input type="radio" name="q18" value="5">
+                    Strongly Like
+                </label>
+                <label>
+                    <input type="radio" name="q18" value="4">
+                    Like
+                </label>
+                <label>
+                    <input type="radio" name="q18" value="3">
+                    Neutral
+                </label>
+                <label>
+                    <input type="radio" name="q18" value="2">
+                    Dislike
+                </label>
+                <label>
+                    <input type="radio" name="q18" value="1">
+                    Strongly Dislike
+                </label>
+                <p>19.)I am quick to take on new responsibilities</p>
+                <label>
+                    <input type="radio" name="q19" value="5">
+                    Strongly Like
+                </label>
+                <label>
+                    <input type="radio" name="q19" value="4">
+                    Like
+                </label>
+                <label>
+                    <input type="radio" name="q19" value="3">
+                    Neutral
+                </label>
+                <label>
+                    <input type="radio" name="q19" value="2">
+                    Dislike
+                </label>
+                <label>
+                    <input type="radio" name="q19" value="1">
+                    Strongly Dislike
+                </label>
+                <p>20.)I am interested in healing people </p>
+                <label>
+                    <input type="radio" name="q20" value="5">
+                    Strongly Like
+                </label>
+                <label>
+                    <input type="radio" name="q20" value="4">
+                    Like
+                </label>
+                <label>
+                    <input type="radio" name="q20" value="3">
+                    Neutral
+                </label>
+                <label>
+                    <input type="radio" name="q20" value="2">
+                    Dislike
+                </label>
+                <label>
+                    <input type="radio" name="q20" value="1">
+                    Strongly Dislike
+                </label>
+                <p>21.)I enjoy trying to figure out how things work</p>
+                <label>
+                    <input type="radio" name="q21" value="5">
+                    Strongly Like
+                </label>
+                <label>
+                    <input type="radio" name="q21" value="4">
+                    Like
+                </label>
+                <label>
+                    <input type="radio" name="q21" value="3">
+                    Neutral
+                </label>
+                <label>
+                    <input type="radio" name="q21" value="2">
+                    Dislike
+                </label>
+                <label>
+                    <input type="radio" name="q21" value="1">
+                    Strongly Dislike
+                </label>
+                <p>22.)I like putting things together or assembling things.</p>
+                <label>
+                    <input type="radio" name="q22" value="5">
+                    Strongly Like
+                </label>
+                <label>
+                    <input type="radio" name="q22" value="4">
+                    Like
+                </label>
+                <label>
+                    <input type="radio" name="q22" value="3">
+                    Neutral
+                </label>
+                <label>
+                    <input type="radio" name="q22" value="2">
+                    Dislike
+                </label>
+                <label>
+                    <input type="radio" name="q22" value="1">
+                    Strongly Dislike
+                </label>
+                <p>23.)I am a creative person</p>
+                <label>
+                    <input type="radio" name="q23" value="5">
+                    Strongly Like
+                </label>
+                <label>
+                    <input type="radio" name="q23" value="4">
+                    Like
+                </label>
+                <label>
+                    <input type="radio" name="q23" value="3">
+                    Neutral
+                </label>
+                <label>
+                    <input type="radio" name="q23" value="2">
+                    Dislike
+                </label>
+                <label>
+                    <input type="radio" name="q23" value="1">
+                    Strongly Dislike
+                </label>
+                <p>24.) I pay attention to details</p>
+                <label>
+                    <input type="radio" name="q24" value="5">
+                    Strongly Like
+                </label>
+                <label>
+                    <input type="radio" name="q24" value="4">
+                    Like
+                </label>
+                <label>
+                    <input type="radio" name="q24" value="3">
+                    Neutral
+                </label>
+                <label>
+                    <input type="radio" name="q24" value="2">
+                    Dislike
+                </label>
+                <label>
+                    <input type="radio" name="q24" value="1">
+                    Strongly Dislike
+                </label>
+                <button id="submit-btn" type="submit">Submit</button>
+              </form>
+          <!-- Your content goes here -->
+        </div>
+      </div>
+      
+      
+
+   
+    <div><canvas id="myCanvas" width="0" height="0"></canvas></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        
+    // Get the form element by its ID
+    const form = document.getElementById('riasec-test');
+    
+    // Listen for the form to be submitted
+    form.addEventListener('submit', (event) => {
+        // Prevent the form from actually submitting
+        event.preventDefault();
+    
+        // Get the values of each answer
+        const q1 = parseInt(form.elements.q1.value);
+        const q2 = parseInt(form.elements.q2.value);
+        const q3 = parseInt(form.elements.q3.value);
+        const q4 = parseInt(form.elements.q4.value);
+        const q5 = parseInt(form.elements.q5.value);
+        const q6 = parseInt(form.elements.q6.value);
+        const q7 = parseInt(form.elements.q7.value);
+        const q8 = parseInt(form.elements.q8.value);
+        const q9 = parseInt(form.elements.q9.value);
+        const q10 = parseInt(form.elements.q10.value);
+        const q11 = parseInt(form.elements.q11.value);
+        const q12 = parseInt(form.elements.q12.value);
+        const q13 = parseInt(form.elements.q13.value);
+        const q14 = parseInt(form.elements.q14.value);
+        const q15 = parseInt(form.elements.q15.value);
+        const q16 = parseInt(form.elements.q16.value);
+        const q17 = parseInt(form.elements.q17.value);
+        const q18 = parseInt(form.elements.q18.value);
+        const q19 = parseInt(form.elements.q19.value);
+        const q20 = parseInt(form.elements.q20.value);
+        const q21 = parseInt(form.elements.q21.value);
+        const q22 = parseInt(form.elements.q22.value);
+        const q23 = parseInt(form.elements.q23.value);
+        const q24 = parseInt(form.elements.q24.value);
+    
+    
+        // Calculate the scores for each of the six RIASEC categories
+        const realistic = (q1 + q7 + q14 + q22) / 4;
+        const investigative = (q2 + q11 + q18 + q21) / 4;
+        const artistic = (q3 + q8 + q17 + q23) / 4;
+        const social = (q4 + q12 + q13 + q20) / 4;
+        const enterprising = (q5 + q10 + q16 + q19) / 4;
+        const conventional = (q6 + q9 +q15 + q24) / 4;
+        abc()
+    
+        // Create a bar chart using Chart.js
+        function abc() {
+            const canvas = document.getElementById("myCanvas");
+            var ctx = canvas.getContext("2d");
+            if (canvas) {
+                ctx = canvas.getContext('2d');
+                const chart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Realistic', 'Investigative', 'Artistic', 'Social', 'Enterprising', 'Conventional'],
+                        datasets: [{
+                            label: 'RIASEC Scores',
+                            data: [realistic, investigative, artistic, social, enterprising, conventional],
+                            backgroundColor: [
+                                'rgba(255, 99, 132, )',
+                                'rgba(54, 162, 235, )',
+                                'rgba(255, 206, 86, )',
+                                'rgba(75, 192, 192, )',
+                                'rgba(153, 102, 255,)',
+                                'rgba(255, 159, 64, )'
+                            ],
+                            borderColor: [
+                                'rgba(255, 99, 132, 1)',
+                                'rgba(54, 162, 235, 1)',
+                                'rgba(255, 206, 86, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(153, 102, 255, 1)',
+                                'rgba(255, 159, 64, 1)'
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                })
+            }
+        };
+    });
+    
+    </script>
+    <h4>The first three personality types having the highest scores make up your Holland's code.</h4>
+ 
+   
+
+    <?php include("footer.php")?>

@@ -1,0 +1,11 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../career_recommender/test-assets"
+		}
+	],
+	"settings": {}
+}
