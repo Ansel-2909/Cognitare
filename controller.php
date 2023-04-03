@@ -40,9 +40,9 @@ if(isset($_GET['page'])){
 		}else{
 			header("Location: ".base_url());
 		}
-	}else if($_GET['page']=="holland"){
+	}else if($_GET['page']=="take-test"){
 		if(isset($_SESSION['loggedIn']) == true){
-			require ('holland.php');
+			require ('take-test.php');
 		}else{
 			header("Location: ".base_url());
 		}

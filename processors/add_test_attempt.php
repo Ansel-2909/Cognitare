@@ -44,7 +44,7 @@ if(isset($_POST['q1']) && isset($_POST['q24'])){
 
 	if($con->query($sql)){
 		updateUserTestAttempt();
-		header('Location: ../controller.php?page=test-result');
+		header('Location: ../controller.php?page=holland-result');
 	}else{
 		echo "ERROR: Could not able to execute $sql. " . mysqli_error($con	);
 	}

@@ -3,7 +3,7 @@ session_start();
 include("header.php");
 include("connection.php");
 include("functions.php");
-include("controller.php");
+
 
 
 ?>
@@ -38,7 +38,7 @@ include("controller.php");
   <div class="tests">
     <div class="test-list">
       <?php if(isset($_SESSION['user_id'])) { ?>
-        <a href="holland.php">
+        <a href="take-test.php">
           <img src="img/careertest.jpg" style="width:100px; height: 100px;" >
           <h3>Career Test</h3>
         </a>
