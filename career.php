@@ -1,5 +1,5 @@
 <?php  include('header.php')?>
-<?php  require('connection.php')?>
+<?php  require('config.php')?>
 
 
 <?php 
@@ -9,13 +9,13 @@ if (isset($_GET['search'])) {
   $sql = "SELECT * FROM careers ORDER BY c_name ASC";
 }
 
-$result = $con->query($sql);
+$result = $conn->query($sql);
 ?>
 
 <div class="row">
   <div class="col-10 mx-auto">
 
-    <nav class="navbar navbar-light bg-light justify-content-between rounded">
+    <nav class="navbar navbar-light bg-light justify-content-between rounded" style="background-color: #EBB42C !important;">
       <h2>Careers</h2>
       <form class="form-inline" method="POST" action="processors/search.php?from=career">
         <input name="c_search" class="form-control mr-sm-2" type="search" placeholder="Search Career" aria-label="Search"> 
@@ -84,7 +84,7 @@ $result = $con->query($sql);
     }else{
       echo '<h6 class="p-3">Sorry! we could not find anything that matches your search...</h6>';
     }
-    $con->close();
+    $conn->close();
     ?>
 
   </div>      

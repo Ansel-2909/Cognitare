@@ -1,0 +1,38 @@
+body {
+    background-image: url("images/doodle.webp");
+    background-repeat: repeat;
+    background-size: cover;
+}
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(to bottom, #9400d3, #4b0082, #0000ff, #00ff00, #ffff00, #ff7f00, #ff0000);
+    opacity: 0.7; /* Adjust the opacity as needed */
+  }
+
+.box-content {
+    color: rgb(2, 0, 3);
+}
+.box-content {
+background-color: #efa2da;
+}
+.header{
+background-color: #f1e681 ;
+}
+.bar{
+    border-radius: 10px;
+    background-color: #eee27a ;
+}
+.bar h2{
+    padding: 10px;
+    text-align: center;
+}
+.button{
+align-items: center;
+justify-content: center;
+text-align: center;
+}

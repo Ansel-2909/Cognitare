@@ -322,7 +322,7 @@ include ('test-assets/courses.php');
 <?php } else { ?>
   <center>
     <div>You did not take the test. Take the test first.</div>
-    <a href="holland.php" class="btn btn-primary">Take the Test</a>
+    <a href="take-test.php" class="btn btn-primary">Take the Test</a>
   </center> 
 <?php } ?>
 

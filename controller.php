@@ -1,10 +1,10 @@
 <?php 
 
 function base_url(){
-	return "http://" . $_SERVER['SERVER_NAME']."/Cognitare";
+	return "http://" . $_SERVER['SERVER_NAME']."/cognitare";
 }
 
-
+session_start();
 if(isset($_GET['page'])){
 	if($_GET['page']=="login"){
 		if(isset($_SESSION['loggedIn']) == true){
@@ -20,9 +20,9 @@ if(isset($_GET['page'])){
 			require ('register.php');
 		}
 
-	}else if($_GET['page']=="profile"){
+	}else if($_GET['page']=="my-profile"){
 		if(isset($_SESSION['loggedIn']) == true){
-			require ('profile.php');
+			require ('my-profile.php');
 		}else{
 			header("Location: ".base_url());
 		}
@@ -46,9 +46,9 @@ if(isset($_GET['page'])){
 		}else{
 			header("Location: ".base_url());
 		}
-	}else if($_GET['page']=="holland-result"){
+	}else if($_GET['page']=="test-result"){
 		if(isset($_SESSION['loggedIn']) == true){
-			require ('holland-result.php');
+			require ('test-result.php');
 		}else{
 			header("Location: ".base_url());
 		}

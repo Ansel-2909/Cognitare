@@ -1,6 +1,6 @@
 <?php
 session_start();
-require '../connnection.php';
+require '../config.php';
 
 if(isset($_POST['feedback']) && isset($_SESSION['loggedIn']) && isset($_GET['add-feedback'])){
 	$feedback = $_POST['feedback'];
@@ -10,7 +10,7 @@ if(isset($_POST['feedback']) && isset($_SESSION['loggedIn']) && isset($_GET['add
 	('".$feedback."', '".$_SESSION['u_id']."','New',now())";
 
 	if($conn->query($sql)){	
-		header('Location: ../controller.php?page=holland-result');
+		header('Location: ../controller.php?page=test-result');
 	}else{
 		echo "ERROR: Could not able to execute $sql. " . mysqli_error($conn	);
 	}
@@ -26,7 +26,7 @@ if(isset($_POST['feedback']) && isset($_SESSION['loggedIn']) && isset($_GET['add
 	WHERE f_u_id = '".$_SESSION['u_id']."'";
 
 	if($conn->query($sql)){	
-		header('Location: ../controller.php?page=holland-result');
+		header('Location: ../controller.php?page=test-result');
 	}else{
 		echo "ERROR: Could not able to execute $sql. " . mysqli_error($conn	);
 	}

@@ -33,7 +33,7 @@ class PDF extends FPDF {
         // Position at 1.5 cm from bottom
 		$this->SetY(-20);
 
-		$this->Image('img/logo.png', 90, 198,5);
+		$this->Image('images/logo.png', 90, 198,5);
 
         // Arial italic 8
 		$this->SetFont('Arial','I',12);

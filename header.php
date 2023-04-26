@@ -1,79 +1,105 @@
-<?php
-
-include("connection.php");
-include("functions.php");
-
-$user_data = check_login($con);
-
-?>
-
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="test-assets\style3.css">
+  <title>Cognitare</title>
+  <link rel="shortcut icon" type="image/jpg" href="images/logo2.png"/>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="test-assests/script.js"></script>
-
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="career.css">
-    <link rel="stylesheet" href="css/style.css">
-    <script src="holland.js"></script>
-    <link rel="stylesheet" href="css/holland.css">
-    <title>Cognitare | Discover Yourself</title>
+  <!-- Bootstrap Icons CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css">
+  <!-- Our Custom CSS -->
+  <link rel="stylesheet" href="style.css">
+  <!-- <?php
+  $user = [];
+  require ('config.php');
+  if(isset($_SESSION['u_id'])){
+    $sql = "SELECT * FROM users WHERE u_id='".$_SESSION['u_id']."'";
+    $result = $conn->query($sql);
+    if ($result->num_rows > 0) {
+      while($row = $result->fetch_assoc()) {
+        $user = $row;
+      }
+    }
+  }
+
+  $fullname = $user['u_fname'].' '.$user['u_mname'].' '.$user['u_lname'] .' '.$user['u_ext'];
+  ?> -->
+
 </head>
 
-<body>
-    <header style="position: relative;">
-        <div class="w3-top" class="header" id="home">
-            <div class="w3-bar w3-card w3-left-align w3-large heeder-large-screen" style="background-color: rgba(1, 43, 40, 1.0);">
-                <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-black w3-large " href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
-                <a href="home.php" class="w3-bar-item w3-button w3-padding-large w3-hover-black">Cognitare</a>
-                <div>
-                    <a href="#about" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-black">About</a>
-                    <a href="career.php" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-black">Career</a>
-                    <div class="w3-dropdown-hover">
-                        <button class="w3-button w3-hover-black">Tests</button>
-                        <div class="w3-dropdown-content w3-bar-block w3-border">
-                            <a href="holland.php" class="w3-bar-item w3-button">Career Test</a>
-                            <a href="big5.php" class="w3-bar-item w3-button">Big Five Personality Test</a>
-                            <a href="dat.php" class="w3-bar-item w3-button">DAT</a>
-                        </div>
-                    </div>
-                    <a href="#contact" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-black">Contact</a>
-                    <?php if (!$user_data) { ?>
-                        <a href="login.php" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-black">Login</a>
-                        <a href="register.php" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-black">Register</a>
-                    <?php } else { ?>
-                        <a href="logout.php" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-black">Logout</a>
-                        <a href="profile.php" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-black">Profile</a>
-                    <?php } ?>
-                </div>
-            </div>
-        </div>
+<body style="background-color: #FFFDD0;">
+
+ <div class="wrapper">
+  <!-- Sidebar  -->
+  <nav id="sidebar">
+    <div id="dismiss">
+      <i class="bi bi-arrow-left"></i>
+    </div>
+
+    <div class="sidebar-header">
+      <h3>Cognitare</h3>
+    </div>
+
+    <ul class="list-unstyled components">
+      <li class="text-truncate <?php if(isset($_GET['page']) && $_GET['page']=="my-profile"){echo "active";}?>">
+        <a href="controller.php?page=my-profile"><i class="bi bi-person bi-2x"> </i><?php 
+        echo $fullname;?></a>
+      </li>
+      <li class="<?php if(isset($_GET['page']) && $_GET['page']=="home"){echo "active";}?>">
+        <a href="controller.php?page=home"> <i class="bi bi-house bi-2x"></i> Home</a>
+      </li>
+      <li class="<?php if(isset($_GET['page']) && $_GET['page']=="career"){echo "active";}?>">
+        <a href="controller.php?page=career"> <i class="bi bi-stack bi-2x"></i> Careers</a>
+      </li>
+      <li class="<?php if(isset($_GET['page']) && $_GET['page']=="take-test"){echo "active";}?>">
+        <a href="controller.php?page=take-test"> <i class="bi bi-table bi-2x"></i> Take the Test</a>
+      </li>
+      <li class="<?php if(isset($_GET['page']) && $_GET['page']=="test-result"){echo "active";}?>">
+        <a href="controller.php?page=test-result"> <i class="bi bi-activity bi-2x"></i> Test Result</a>
+      </li>
+      <li class="<?php if(isset($_GET['page']) && $_GET['page']=="feedbacks"){echo "active";}?>
+      <?php if($_SESSION['u_role'] !=  "admin"){echo "d-none";}?>">
+      <a href="controller.php?page=feedbacks"> <i class="bi bi-reply bi-2x"></i> Feedbacks</a>
+    </li>
+    <li class="<?php if(isset($_GET['page']) && $_GET['page']=="about"){echo "active";}?>">
+      <a href="controller.php?page=about"> <i class="bi bi-question-circle bi-2x"></i> About</a>
+    </li>
+    <li class="">
+      <a href="processors/logout.php"> <i class="bi bi-box-arrow-right bi-2x"></i> Log Out</a>
+    </li>
+  </ul>
+
+  <ul class="list-unstyled CTAs">
+    <center>
+      <div class="footer-text">All Rights Reserved.<br>Copyright &copy; 2021</div>
+    </center>
+  </ul>
+</nav>
+
+<!-- Page Content  -->
+<div id="content">
+
+  <nav class="navbar navbar-expand-lg navbar-light " style="background-color: #EBB42C;">
+    <div class="container-fluid">
+
+      <button type="button" id="sidebarCollapse" class="btn btn-info" style="background-color: #05410b">
+        <i class="bi bi-list"></i> Menu
+      </button>
+    </div>
+  </nav>
 
 
 
-        <!-- Navbar on small screens -->
-        <div id="navDemo" class="w3-bar-block  w3-hide w3-hide-large w3-hide-medium w3-large">
-            <a href="#about" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">About</a>
-            <a href="#tests" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">Tests</a>
-            <a href="#contact" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">Contact</a>
-            <?php if (!$user_data) { ?>
-                <a href="login.php" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">Login</a>
-                <a href="register.php" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">Register</a>
-            <?php } else { ?>
-                <a href="logout.php" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">Logout</a>
-                <a href="profile.php" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">Profile</a>
-            <?php } ?>
-        </div>
-
-
-    </header>

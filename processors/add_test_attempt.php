@@ -1,17 +1,17 @@
 <?php
 session_start();
 
-require '../connection.php';
+require '../config.php';
 
 
-if(isset($_POST['q1']) && isset($_POST['q24'])){
+if(isset($_POST['q1']) && isset($_POST['q42'])){
 	$r_score = 0;
 	$i_score = 0;
 	$a_score = 0;
 	$s_score = 0;
 	$e_score = 0;
 	$c_score = 0;
-	$s_user_id = $_SESSION['user_id'];
+	$s_user_id = $_SESSION['u_id'];
 	foreach ($_POST as $key => $value) {
 		switch ($value) {
 			case 'R':
@@ -42,28 +42,28 @@ if(isset($_POST['q1']) && isset($_POST['q24'])){
 	('".$r_score."', '".$i_score."', '".$a_score."','".$s_score."','".$e_score."','".$c_score."',
 	'".$s_user_id."', now())";
 
-	if($con->query($sql)){
+	if($conn->query($sql)){
 		updateUserTestAttempt();
-		header('Location: ../controller.php?page=holland-result');
+		header('Location: ../controller.php?page=test-result');
 	}else{
-		echo "ERROR: Could not able to execute $sql. " . mysqli_error($con	);
+		echo "ERROR: Could not able to execute $sql. " . mysqli_error($conn	);
 	}
-	$con->close();
+	$conn->close();
 
 }if(isset($_POST[''])){
 	header('Location: ../controller.php?page=home');
 }
 
 function updateUserTestAttempt(){
-	require '../connection.php';
+	require '../config.php';
 
-	$sql = "UPDATE user SET u_test_attempt	= '1' WHERE user_id = '".$_SESSION['user_id']."'";
-	if($con->query($sql)){
+	$sql = "UPDATE users SET u_test_attempt	= '1' WHERE u_id = '".$_SESSION['u_id']."'";
+	if($conn->query($sql)){
 		$_SESSION['u_test_attempt'] = 1;
 	}else{
-		echo "ERROR: Could not able to execute $sql. " . mysqli_error($con	);
+		echo "ERROR: Could not able to execute $sql. " . mysqli_error($conn	);
 	}
-	$con->close();
+	$conn->close();
 }
 
 ?>
